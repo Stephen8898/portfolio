@@ -1,12 +1,13 @@
 name: Set up Porfolio Integration runs
 # This CI should run on every Pull request made  
 on:
-  push:
+  pull_request:
+    types: [opened] 
     branches: 
-      - main
+      'dev/**'
 jobs: 
   sample-job:
-    name: first job
+    name: Run CI on opned PR
     runs-on: ubuntu-latest
     steps: 
       - run: echo 'This is a hello world Test'
