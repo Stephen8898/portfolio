@@ -1,8 +1,8 @@
 name: Set up Porfolio Integration runs
-# This CI should run on every Pull request made  
+# This CI should run on every Pull request made
 on:
   pull_request:
-    branches: 
+    branches:
       - main
 permissions:
   contents: read
@@ -11,29 +11,29 @@ defaults:
   run:
     shell: bash
     working-directory: ./stephens-portfolio
-    
-jobs: 
+
+jobs:
   linter:
-    name: 'Run linter'
+    name: "Run linter"
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v4
-        name: 'Checkout Repo'
-          
-      - name: 'Install Dependencies'
+        name: "Checkout Repo"
+
+      - name: "Install Dependencies"
         run: npm install
-        
-      - name: 'Run Linter'    
+
+      - name: "Run Linter"
         run: npm run lint
-  
+
   dependency-review:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        name: 'Checkout Repo'
-      
+        name: "Checkout Repo"
+
       - uses: actions/dependency-review-action@v4
         name: Dependency Review
-        
+
         with:
           fail-on-severity: critical
