@@ -1,0 +1,39 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+#sidebar {
+    width: 20%;
+    min-height: 100vh;
+}
+
+#content {
+    width: 80%;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    background: #7386D5;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        display: none;
+    }
+    #content {
+        width: 100%;
+    }
+}
+
