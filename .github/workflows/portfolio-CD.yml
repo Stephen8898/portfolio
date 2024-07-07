@@ -36,12 +36,12 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -var="bucket_name=${{vars.BUCKET_NAME}}" -var="domain_name=${{vars.DOMAIN_NAME}}" -var="zone_id=${{vars.ZONE_ID}}" --input=false
+        run: terraform plan -var="bucket_name=${{vars.BUCKET_NAME}}" -var="domain_name=${{vars.DOMAIN_NAME}}" -var="zone_id=${{vars.ZONE_ID}}" -out=tfplan -input=false 
         working-directory: ./site-infrastructure
 
       - name: Terraform Apply
         id: apply
-        run: terraform apply -auto-approve
+        run: terraform apply -input=false tfplan -auto-approve
         working-directory: ./site-infrastructure
 
   uploud_to_bucket:
