@@ -27,7 +27,7 @@ jobs:
   bot_comment:
     runs-on: ubuntu-latest
     steps:
-      - name: Commenting on PR
+      - name: Commenting on pull request
         uses: actions/github-script@v7
         with:
           script: |
