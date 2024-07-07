@@ -1,1 +1,0 @@
-aws s3 cp ./stephen-portfolioV2 s3://portfolio/ --recusive
