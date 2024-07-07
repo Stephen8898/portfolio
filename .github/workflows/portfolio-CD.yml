@@ -36,12 +36,16 @@ jobs:
 
       - name: Terraform Plan
         id: plan
+<<<<<<< HEAD
         run: terraform plan -var="bucket_name=${{vars.BUCKET_NAME}}" -var="domain_name=${{vars.DOMAIN_NAME}}" -var="zone_id=${{vars.ZONE_ID}}" --input=false
+=======
+        run: terraform plan -var="bucket_name=${{vars.BUCKET_NAME}}" -var="domain_name=${{vars.DOMAIN_NAME}}" -var="zone_id=${{vars.ZONE_ID}}" -out=tfplan -input=false 
+>>>>>>> efa45129bd0796f9597d547f60df0d54a9cbbb74
         working-directory: ./site-infrastructure
 
       - name: Terraform Apply
         id: apply
-        run: terraform apply -auto-approve
+        run: terraform apply -input=false tfplan -auto-approve
         working-directory: ./site-infrastructure
 
   uploud_to_bucket:
@@ -57,7 +61,7 @@ jobs:
         with:
           aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
           aws-secret-access-key: ${{secrets.AWS_SECERET_ACCESS_KEY}}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN}}
+          # aws-session-token: ${{ secrets.AWS_SESSION_TOKEN}}
           aws-region: us-east-1
 
       - name: Upload files to S3 bucket
