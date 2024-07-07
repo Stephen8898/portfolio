@@ -10,23 +10,10 @@ permissions:
 defaults:
   run:
     shell: bash
-    working-directory: ./stephens-portfolio
+    working-directory: ./stephens-portfolioV2
 
 jobs:
-  linter:
-    name: "Run linter"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        name: "Checkout Repo"
-
-      - name: "Install Dependencies"
-        run: npm install
-
-      - name: "Run Linter"
-        run: npm run lint
-
-  dependency-review:
+  dependency_review:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,3 +24,12 @@ jobs:
 
         with:
           fail-on-severity: critical
+  # bot_comment:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Commenting on pull request
+  #       uses: actions/github-script@v7
+  #       id: comment_on_pr
+  #       with:
+  #         github-token: ${{secrets.GITHUB_TOKEN}}
+  #         result-encoding: string

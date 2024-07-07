@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="d-flex">
+        <nav id="sidebar" class="bg-dark">
+            <div class="sidebar-header text-white">
+                <h3>My Portfolio</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="content" class="p-4">
+            <section id="home">
+                <div class="text-center">
+                    <img src="placeholder.jpg" alt="Profile Picture" class="rounded-circle" width="150" height="150">
+                    <h2>About Me</h2>
+                    <p>This is the About Me paragraph where you can introduce yourself.</p>
+                </div>
+            </section>
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="card-deck">
+                    <div class="card">
+                        <img src="project1.jpg" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 1</h5>
+                            <p class="card-text">This is a short description of project 1.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="project2.jpg" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 2</h5>
+                            <p class="card-text">This is a short description of project 2.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="project3.jpg" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Project 3</h5>
+                            <p class="card-text">This is a short description of project 3.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="resume">
+                <h2>Resume</h2>
+                <div id="resume-container">
+                    <canvas id="pdf-canvas"></canvas>
+                </div>
+            </section>
+            <section id="contact">
+                <h2>Contact Me</h2>
+                <a href="mailto:your-email@example.com" class="btn btn-primary">Email</a>
+                <a href="https://www.linkedin.com/in/your-linkedin" class="btn btn-primary">LinkedIn</a>
+                <a href="https://twitter.com/your-twitter" class="btn btn-primary">Twitter</a>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
