@@ -61,5 +61,9 @@ jobs:
 
       - name: Upload files to S3 bucket
         run: |
-          aws s3 cp ./stephen-portfolioV2 s3://${{vars.BUCKET_NAME}}/ --recusive
+          aws s3 cp ./stephen-portfolioV2/index.html s3://${{vars.BUCKET_NAME}}/ 
+          aws s3 cp ./stephen-portfolioV2/error.html s3://${{vars.BUCKET_NAME}}/ 
+          aws s3 cp ./stephen-portfolioV2/error.css s3://${{vars.BUCKET_NAME}}/
+          aws s3 cp ./stephen-portfolioV2/styles.css s3://${{vars.BUCKET_NAME}}/
+          aws s3 cp ./stephen-portfolioV2/scripts.js s3://${{vars.BUCKET_NAME}}/
         shell: bash
