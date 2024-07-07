@@ -13,7 +13,7 @@ defaults:
     working-directory: ./stephens-portfolioV2
 
 jobs:
-  dependency-review:
+  dependency_review:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,3 +24,16 @@ jobs:
 
         with:
           fail-on-severity: critical
+  bot_comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Commenting on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: Opened PR perfect! Let me run this code review
+            })
