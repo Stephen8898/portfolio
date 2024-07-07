@@ -42,6 +42,7 @@ jobs:
         working-directory: ./site-infrastructure
 
   uploud_to_bucket:
+    needs: create_aws_infrastructure
     name: deploy_files_to_s3
     runs-on: ubuntu-latest
     steps:
