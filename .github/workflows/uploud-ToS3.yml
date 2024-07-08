@@ -6,7 +6,7 @@ on: workflow_dispatch
 env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY}}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECERET_ACCESS_KEY}}
-  BUCKET_NAME: ${{vars.BUCKET_NAME}}
+  DOMAIN_NAME: ${{vars.DOMAIN_NAME}} #Name of the S3 bucket
 
 jobs:
   uploud_to_bucket:
@@ -21,18 +21,8 @@ jobs:
         with:
           command: cp
           source: ./stephens-portfolioV2/
-          destination: s3://${{vars.BUCKET_NAME}}/
+          destination: s3://${{vars.DOMAIN_NAME}}/
           aws_access_key_id: ${{secrets.AWS_ACCESS_KEY}}
           aws_secret_access_key: ${{secrets.AWS_SECERET_ACCESS_KEY}}
           aws_region: us-east-1
           flags: --recursive
-    #   - name: Configure AWS cli
-    #     uses: aws-actions/configure-aws-credentials@v4
-    #     with:
-    #       aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
-    #       aws-secret-access-key: ${{secrets.AWS_SECERET_ACCESS_KEY}}
-    #       # aws-session-token: ${{ secrets.AWS_SESSION_TOKEN}}
-    #       aws-region: us-east-1
-    #   - name: Upload files to S3 bucket
-    #     run: |
-    #     shell: bash
