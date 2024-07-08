@@ -16,18 +16,23 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Configure AWS cli
-        uses: aws-actions/configure-aws-credentials@v4
+      - name: push objects to bucket
+        uses: keithweaver/aws-s3-github-action@v1.0.0
         with:
-          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
-          aws-secret-access-key: ${{secrets.AWS_SECERET_ACCESS_KEY}}
-          # aws-session-token: ${{ secrets.AWS_SESSION_TOKEN}}
-          aws-region: us-east-1
-      - name: Upload files to S3 bucket
-        run: |
-          aws s3 cp ../stephen-portfolioV2/index.html s3://${{vars.BUCKET_NAME}}/
-          aws s3 cp ../stephen-portfolioV2/error.html s3://${{vars.BUCKET_NAME}}/
-          aws s3 cp ../stephen-portfolioV2/error.css s3://${{vars.BUCKET_NAME}}/
-          aws s3 cp ../stephen-portfolioV2/styles.css s3://${{vars.BUCKET_NAME}}/
-          aws s3 cp ../stephen-portfolioV2/scripts.js s3://${{vars.BUCKET_NAME}}/
-        shell: bash
+          command: cp
+          source: ./stephens-portfolioV2/
+          aws_access_key_id: ${{secrets.AWS_ACCESS_KEY}}
+          aws_secret_access_key: ${{secrets.AWS_SECERET_ACCESS_KEY}}
+          aws_region: us-east-1
+          flags: --recursive
+    #   - name: Configure AWS cli
+    #     uses: aws-actions/configure-aws-credentials@v4
+    #     with:
+    #       aws-access-key-id: ${{secrets.AWS_ACCESS_KEY}}
+    #       aws-secret-access-key: ${{secrets.AWS_SECERET_ACCESS_KEY}}
+    #       # aws-session-token: ${{ secrets.AWS_SESSION_TOKEN}}
+    #       aws-region: us-east-1
+    #   - name: Upload files to S3 bucket
+    #     run: |
+    #     shell: bash
+
