@@ -6,7 +6,8 @@ on: workflow_dispatch
 env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY}}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECERET_ACCESS_KEY}}
-  BUCKET_NAME: ${{vars.BUCKET_NAME}}
+  CERTIFICATE_ARN: ${{vars.CERTIFICATE_ARN}}
+  SUB_DOMAIN_NAME: ${{ vars.SUB_DOMAIN_NAME}}
   DOMAIN_NAME: ${{vars.DOMAIN_NAME}}
   ZONE_ID: ${{vars.ZONE_ID}}
 
@@ -36,9 +37,13 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -var="bucket_name=${{vars.BUCKET_NAME}}" -var="domain_name=${{vars.DOMAIN_NAME}}" -var="zone_id=${{vars.ZONE_ID}}" -out=tfplan -input=false -no-color
+        run: terraform plan -var="bucket_name=${{vars.DOMAIN_NAME}}" \
+          -var="domain_name=${{vars.SUB_DOMAIN_NAME}}" \
+          -var="zone_id=${{vars.ZONE_ID}}" \
+          -var="certificate_arn=${{vars.CERTIFICATE_ARN}}"
+          -input=false -no-color
         working-directory: ./site-infrastructure
       - name: Terraform Apply
         id: apply
-        run: terraform apply -input=false tfplan
+        run: terraform apply -input=false
         working-directory: ./site-infrastructure
