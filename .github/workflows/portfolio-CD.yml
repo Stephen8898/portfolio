@@ -45,5 +45,5 @@ jobs:
         working-directory: ./site-infrastructure
       - name: Terraform Apply
         id: apply
-        run: terraform apply -input=false
+        run: terraform apply -input=false tfplan
         working-directory: ./site-infrastructure
