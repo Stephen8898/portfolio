@@ -21,6 +21,7 @@ jobs:
         with:
           command: cp
           source: ./stephens-portfolioV2/
+          destination: s3://${{vars.BUCKET_NAME}}/
           aws_access_key_id: ${{secrets.AWS_ACCESS_KEY}}
           aws_secret_access_key: ${{secrets.AWS_SECERET_ACCESS_KEY}}
           aws_region: us-east-1
@@ -35,4 +36,3 @@ jobs:
     #   - name: Upload files to S3 bucket
     #     run: |
     #     shell: bash
-
