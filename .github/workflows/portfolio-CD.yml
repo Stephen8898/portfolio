@@ -32,7 +32,7 @@ jobs:
 
       - name: Terraform Validate
         id: validate
-        run: terraform validate -no-color
+        run: terraform validate
         working-directory: ./site-infrastructure
 
       - name: Terraform Plan
@@ -41,9 +41,9 @@ jobs:
           -var="sub_domain_name=${{vars.SUB_DOMAIN_NAME}}"
           -var="zone_id=${{vars.ZONE_ID}}"
           -var="certificate_arn=${{vars.CERTIFICATE_ARN}}"
-          -input=false -no-color
+          -out=tfplan -input=false
         working-directory: ./site-infrastructure
       - name: Terraform Apply
         id: apply
-        run: terraform apply -input=false
+        run: terraform apply -input=false tfplan
         working-directory: ./site-infrastructure
